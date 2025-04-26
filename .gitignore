@@ -16,6 +16,7 @@ out/
 
 ### Kotlin ###
 .kotlin
+/kotlin-js-store/yarn.lock
 
 ### Eclipse ###
 .apt_generated

@@ -9,7 +9,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Kookies"
+rootProject.name = "kookies"
 
 include(
     ":core",
