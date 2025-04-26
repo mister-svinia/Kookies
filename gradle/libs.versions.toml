@@ -1,0 +1,22 @@
+[versions]
+it = "0.1"
+# Kotlin & additions
+kotlin = "2.1.20"
+kotlinx-serialization = "1.8.1"
+kotlinx-browser = "0.3"
+kotlinx-datetime = "0.6.2"
+# Common utils
+urlencoder = "1.6.0"
+# Artifacts publishing
+maven-publish = "0.31.0"
+
+[libraries]
+# Common utils
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinx-browser" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+urlencoder = { group = "net.thauvin.erik.urlencoder", name = "urlencoder-lib", version.ref = "urlencoder" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
