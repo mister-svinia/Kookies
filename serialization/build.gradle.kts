@@ -45,9 +45,23 @@ mavenPublishing {
             This artifact add support for type-safe serialization of cookies.
         """.trimIndent()
         url = "https://github.com/mister-svinia/Kookies"
+
+        scm {
+            connection = "scm:https://github.com/mister-svinia/kookies.git"
+            developerConnection = "scm:git@github.com:mister-svinia/kookies.git"
+            url = "https://github.com/mister-svinia/kookies"
+        }
+
+        licenses {
+            license {
+                name = "The Apache License, Version 2.0"
+                url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+        }
+
         developers {
             developer {
-                id = "n.savelev"
+                id = "MrSvinia"
                 name = "Niel Savelev"
                 email = "i@savnil.ru"
             }

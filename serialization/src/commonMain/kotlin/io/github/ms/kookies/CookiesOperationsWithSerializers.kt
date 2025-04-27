@@ -26,13 +26,16 @@ fun <T> SerializedCookiesManager.readSerializedAllCookies(
     serializer: KSerializer<T>,
     predicate: (String) -> Boolean,
 ): List<DeserializedCookieData<T>> {
-    return readAllCookies(predicate)
-        .map { cookieData ->
+    return readAllCookies(predicate).mapNotNull { cookieData ->
+        try {
             DeserializedCookieData(
                 key = cookieData.key,
                 value = decodeFromString(serializer, cookieData.value)
             )
+        } catch (e: SerializationException) {
+            resolveDecodingException(e)
         }
+    }
 }
 
 fun <T> SerializedCookiesManager.readSerializedCookieOrNull(
@@ -46,10 +49,7 @@ fun <T> SerializedCookiesManager.readSerializedCookieOrNull(
                 value = decodeFromString(serializer, rawCookie.value),
             )
         } catch (e: SerializationException) {
-            when (invalidSerializedCookieReadStrategy) {
-                InvalidSerializedCookieReadStrategy.THROW -> throw e
-                InvalidSerializedCookieReadStrategy.NULL -> null
-            }
+            resolveDecodingException(e)
         }
     }
 }
