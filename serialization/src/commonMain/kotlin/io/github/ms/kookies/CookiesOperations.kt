@@ -5,11 +5,11 @@ import kotlinx.serialization.serializer
 inline fun <reified T> SerializedCookiesManager.writeSerializedCookie(
     key: String,
     value: T,
-    path: String?,
-    domain: CookieDomainProperty,
-    expires: CookieExpiresProperty,
-    isSecure: Boolean,
-    samesite: CookieSamesiteProperty?,
+    path: String? = null,
+    domain: CookieDomainProperty = CookieDomainProperty.Current,
+    expires: CookieExpiresProperty = CookieExpiresProperty.Session,
+    isSecure: Boolean = false,
+    samesite: CookieSamesiteProperty? = null,
 ) = writeSerializedCookie(
     key = key,
     serializer = serializer(),

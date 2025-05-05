@@ -22,6 +22,12 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            languageSettings {
+                optIn("kotlin.io.encoding.ExperimentalEncodingApi")
+            }
+        }
+
         commonMain {
             dependencies {
                 api(project(":core"))

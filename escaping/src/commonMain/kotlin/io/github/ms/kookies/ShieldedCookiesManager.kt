@@ -1,14 +1,12 @@
 package io.github.ms.kookies
 
-import net.thauvin.erik.urlencoder.UrlEncoderUtil
-
 class ShieldedCookiesManager(
     private val cookiesManager: CookiesManager,
     var filterStrategy: ShieldedFilterStrategy = ShieldedFilterStrategy.UNESCAPE_AND_FILTER,
-    var escapeCookieKey: (String) -> String = UrlEncoderUtil::encode,
-    var unescapeCookieKey: (String) -> String = UrlEncoderUtil::decode,
-    var escapeCookieValue: (String) -> String = UrlEncoderUtil::encode,
-    var unescapeCookieValue: (String) -> String = UrlEncoderUtil::decode,
+    var escapeCookieKey: (String) -> String = { it },
+    var unescapeCookieKey: (String) -> String = { it },
+    var escapeCookieValue: (String) -> String = { it.encodeBase64() },
+    var unescapeCookieValue: (String) -> String = { it.decodeBase64() },
 ) : CookiesManager by cookiesManager {
     override fun writeCookie(
         key: String,
